@@ -31,8 +31,6 @@
         "*.{js,ts,jsx,tsx}": [
             "prettier --write",
             "eslint --fix"
-        ],
-        "*.css": "prettier --write",
-        "*.json": "prettier --write"
+        ]
     }
 }
