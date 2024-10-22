@@ -1,4 +1,4 @@
-# Project ArtOa.io
+# Project
 
 The first automated platform that connects customers and wall-artists to each other.
 
@@ -6,10 +6,10 @@ The first automated platform that connects customers and wall-artists to each ot
 
 ### Prerequisites
 
--   GIT
--   Node.JS
--   NPM
--   IDE Software (like VSCode)
+* GIT
+* Node.JS
+* NPM
+* IDE Software (like VSCode)
 
 ### Getting Codebase Locally
 
@@ -32,23 +32,22 @@ To ensure a better developer experience and minimize issues during project devel
 
 Commits are important to differentiate, reveal and clearly check what is changed.
 
--   Before writing code, break down the task into smaller parts in your mind.
--   Work consistently and complete the task step by step.
--   It's best to wrap each logical micro-task in one commit.
--   Clearly define what has changed in each commit.
--   Use verbs, like: `add`, `update`, `delete`, `change`, `create`.
--   Ensure not to commit large files, like `node_moduls`.
+* Before writing code, break down the task into smaller parts in your mind.
+* Work consistently and complete the task step by step.
+* It's best to wrap each logical micro-task in one commit.
+* Clearly define what has changed in each commit.
+* Use verbs, like: `add`, `update`, `delete`, `change`, `create`.
+* Ensure not to commit large files, like `node_moduls`.
 
 ### Branch Naming
 
 There are several branch name prefixes depending on why you are creating a new branch and its purpose. By following these rules, it becomes easier to maintain the codebase and quickly find things when needed.
 
 If you are:
-
--   Adding a new feature, start branch name with `feat/` and add the task name with _kebab-case_ way.
--   Changing, upgrading, reffactoring an exciting feature: `ref/`.
--   Fixing a bug: `fix/_`.
--   Adding or creating documentation: `docs/_`.
+* Adding a new feature, start branch name with `feat/` and add the task name with _kebab-case_ way.
+* Changing, upgrading, reffactoring an exciting feature: `ref/`.
+* Fixing a bug: `fix/_`.
+* Adding or creating documentation: `docs/_`.
 
 Examples: `fix/auth-error-bug`, `feat/auth-with-google`, `docs/navigation-guidline`.
 
@@ -56,23 +55,22 @@ Examples: `fix/auth-error-bug`, `feat/auth-with-google`, `docs/navigation-guidli
 
 After fully completing taken task, you should publish your changes for everyone.
 
--   Make sure changes does not include unexpected bugs or errors.
--   Ensure you are on the task branch, not `main` branch.
--   Publish changes by running `git push origin <<branch-name>>`
-
+* Make sure changes does not include unexpected bugs or errors.
+* Ensure you are on the task branch, not `main` branch.
+* Publish changes by running `git push origin <<branch-name>>`
 # GitHub Guide
 
 ### Creating Pull Request
 
 Applying new feature or bug fix or documentation update on the `main` branch, should happend through `Pull Request`.
 
--   Open Pull Request from _here_.
--   Fill the `Title` and `Description` fields with following the _conventions_.
--   Select yourself in `Assignees` window.
--   Select one of leads in `Reviewers` window.
--   Ensure you merging correct branch on the `main` branch.
--   Create pull request and wait for the review.
--   If needed, add comments on the PR.
+* Open Pull Request from _here_.
+* Fill the `Title` and `Description` fields with following the _conventions_.
+* Select yourself in `Assignees` window.
+* Select one of leads in `Reviewers` window.
+* Ensure you merging correct branch on the `main` branch.
+* Create pull request and wait for the review.
+* If needed, add comments on the PR.
 
 ### Merging
 
