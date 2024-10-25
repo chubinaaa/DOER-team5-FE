@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-const geistSans = localFont({
-    src: "./fonts/GeistVF.woff",
-    variable: "--font-geist-sans",
+const montserratSans = localFont({
+    src: "./fonts/Montserrat-VariableFont_wght.ttf",
+    variable: "--font-montserrat-sans",
     weight: "100 900",
 });
 
@@ -20,7 +20,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${geistSans.variable} antialiased scroll-hidden`}>{children}</body>
+            <body className={`${montserratSans.variable} antialiased scroll-hidden`}>
+                {children}
+            </body>
         </html>
     );
 }
