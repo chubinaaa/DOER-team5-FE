@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Header from "@/components/Header";
 
 const montserratSans = localFont({
     src: "./fonts/Montserrat-VariableFont_wght.ttf",
@@ -21,7 +22,10 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`${montserratSans.variable} antialiased scroll-hidden`}>
-                {children}
+                <div className="app-container">
+                    <Header />
+                    {children}
+                </div>
             </body>
         </html>
     );
