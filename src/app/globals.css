@@ -18,6 +18,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
     overflow-x: hidden;
     color: #fff;
     font-family: "Montserrat", sans-serif;
@@ -26,6 +27,7 @@ body {
 
 .app-container {
     max-width: 1440px;
+
     margin: 0 auto;
 
     width: 100%;
