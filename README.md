@@ -1,77 +1,146 @@
 # Project
 
-The first automated platform that connects customers and wall-artists to each other.
+The first automated platform that connects customers and wall artists seamlessly.
 
-# Getting started
+## Getting Started
 
 ### Prerequisites
 
-* GIT
-* Node.JS
-* NPM
-* IDE Software (like VSCode)
+Ensure you have the following installed on your machine:
 
-### Getting Codebase Locally
+- [**Git**](https://git-scm.com/) (for version control)
+- [**Node.js**](https://nodejs.org/en) (runtime environment for JavaScript)
+- [**pnpm**](https://pnpm.io/) (Node.js package manager)
+- An **IDE** (such as [VSCode](https://code.visualstudio.com/))
 
-1. Download ZIP file of project or clone directly in your IDE.
-2. Run `npm install` to synchronize project dependencies.
-3. Run `npm run dev` to start local development server.
-4. Open `http://localhost:3000` in your browser to see the app.
-5. Start working on the task.
+### Setting Up the Codebase Locally
 
-# Conventions and Working Guide
+Follow these steps to get the project up and running on your local machine:
 
-To ensure a better developer experience and minimize issues during project development, it is important to follow the general rules:
+1. Clone the repository or download the project ZIP file:
 
-1. Make sure your local `main` branch is in sync with the remote one by running `git pull origin main`.
-2. Ensure you have installed all dependencies that may have been added by other developers before starting your task by running `npm install`.
-3. Create new branch with following _the rules_: run `git checkout -b <<branch-name>>`.
-4. Feel free to start adding new features.
+   ```bash
+   git clone https://github.com/Doer-Community/artoa-front.git
+   ```
 
-### Commiting
+2. Navigate into the project directory:
 
-Commits are important to differentiate, reveal and clearly check what is changed.
+   ```bash
+   cd artoa-front
+   ```
 
-* Before writing code, break down the task into smaller parts in your mind.
-* Work consistently and complete the task step by step.
-* It's best to wrap each logical micro-task in one commit.
-* Clearly define what has changed in each commit.
-* Use verbs, like: `add`, `update`, `delete`, `change`, `create`.
-* Ensure not to commit large files, like `node_moduls`.
+3. Install project dependencies:
 
-### Branch Naming
+   ```bash
+   pnpm install
+   ```
 
-There are several branch name prefixes depending on why you are creating a new branch and its purpose. By following these rules, it becomes easier to maintain the codebase and quickly find things when needed.
+4. Start the local development server:
 
-If you are:
-* Adding a new feature, start branch name with `feat/` and add the task name with _kebab-case_ way.
-* Changing, upgrading, reffactoring an exciting feature: `ref/`.
-* Fixing a bug: `fix/_`.
-* Adding or creating documentation: `docs/_`.
+   ```bash
+   pnpm dev
+   ```
 
-Examples: `fix/auth-error-bug`, `feat/auth-with-google`, `docs/navigation-guidline`.
+5. Open your browser and navigate to `http://localhost:3000` to view the app.
+6. You’re now ready to start working on your task!
 
-### Publishing Local Changes
+---
 
-After fully completing taken task, you should publish your changes for everyone.
+## Development Conventions and Guidelines
 
-* Make sure changes does not include unexpected bugs or errors.
-* Ensure you are on the task branch, not `main` branch.
-* Publish changes by running `git push origin <<branch-name>>`
-# GitHub Guide
+To ensure smooth development and maintain consistency across the team,
+please follow these best practices:
 
-### Creating Pull Request
+### Syncing the Codebase
 
-Applying new feature or bug fix or documentation update on the `main` branch, should happend through `Pull Request`.
+1. Before starting a new task, always ensure your local `main` branch is up to date:
 
-* Open Pull Request from _here_.
-* Fill the `Title` and `Description` fields with following the _conventions_.
-* Select yourself in `Assignees` window.
-* Select one of leads in `Reviewers` window.
-* Ensure you merging correct branch on the `main` branch.
-* Create pull request and wait for the review.
-* If needed, add comments on the PR.
+   ```bash
+   git pull origin main
+   ```
 
-### Merging
+2. After syncing the latest changes, install any new dependencies:
 
-After receiving approval from the selected reviewer, simply click `Merge Pull Request`. The codebase will be updated, and the PR will automatically close.
+   ```bash
+   pnpm install
+   ```
+
+### Working on a New Task
+
+1. Create a new branch following the naming conventions below:
+
+   ```bash
+   git checkout -b <branch-name>
+   ```
+
+2. Once you’ve completed your task, commit your changes (see the commit guidelines
+   below).
+
+### Committing Changes
+
+Commit messages are crucial for tracking changes. Use the following guidelines
+for clear and meaningful commits:
+
+- Break down tasks into smaller, manageable parts.
+- Each micro-task should have its own commit.
+- Commit messages should start with a verb, such as: `add`, `update`, `delete`,
+  `fix`, `create`.
+- Example commit messages:
+  - `add login feature`
+  - `fix authentication bug`
+  - `update readme`
+- Avoid committing large or unnecessary files (e.g., `node_modules`).
+
+### Branch Naming Conventions
+
+Use the following prefixes for branch names to keep things organized:
+
+- **New feature**: `feat/<feature-name>`
+- **Refactor/Enhancement**: `ref/<feature-name>`
+- **Bug fix**: `fix/<bug-description>`
+- **Documentation**: `docs/<documentation-name>`
+
+Examples:
+
+- `feat/user-authentication`
+- `ref/update-profile-feature`
+- `fix/login-error`
+- `docs/setup-instructions`
+
+---
+
+## Publishing Your Changes
+
+When your task is complete and you've ensured everything works correctly, follow
+these steps:
+
+1. Ensure there are no errors or unexpected bugs.
+2. Push your changes:
+
+   ```bash
+   git push origin <branch-name>
+   ```
+
+---
+
+## GitHub Workflow Guide
+
+### Creating a Pull Request (PR)
+
+All changes must be merged into the `main` branch through a pull request.
+
+1. Open a new pull request on GitHub.
+2. Follow the **PR template** to fill in the `Title` and `Description` fields
+   according to the conventions.
+3. Assign yourself in the `Assignees` field.
+4. Select one of the leads in the `Reviewers` field.
+5. Ensure the correct branch is being merged into `main`.
+6. Submit the pull request and wait for a review.
+7. Add comments on the PR if needed.
+
+### Merging Changes
+
+Once your pull request has been reviewed and approved:
+
+1. Click `Merge Pull Request`.
+2. The codebase will automatically update, and the pull request will close.
