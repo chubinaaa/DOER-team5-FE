@@ -1,6 +1,6 @@
-# Project
+# Project NAME
 
-The first automated platform that connects customers and wall artists seamlessly.
+_project description_
 
 ## Getting Started
 
@@ -20,29 +20,23 @@ Follow these steps to get the project up and running on your local machine:
 1. Clone the repository or download the project ZIP file:
 
    ```bash
-   git clone https://github.com/Doer-Community/artoa-front.git
+   git clone https://github.com/Doer-Community/team5-FE.git ./
    ```
 
-2. Navigate into the project directory:
-
-   ```bash
-   cd artoa-front
-   ```
-
-3. Install project dependencies:
+2. Install project dependencies:
 
    ```bash
    pnpm install
    ```
 
-4. Start the local development server:
+3. Start the local development server:
 
    ```bash
    pnpm dev
    ```
 
-5. Open your browser and navigate to `http://localhost:3000` to view the app.
-6. You’re now ready to start working on your task!
+4. Open your browser and navigate to `http://localhost:3000` to view the app.
+5. You’re now ready to start working on your task!
 
 ---
 
