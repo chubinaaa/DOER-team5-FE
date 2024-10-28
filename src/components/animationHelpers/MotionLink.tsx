@@ -2,11 +2,15 @@
 import Link from "next/link";
 import React from "react";
 import { motion } from "framer-motion";
+import { v4 as uuidv4 } from "uuid";
 
 const DURATION = 0.25;
 const STAGER = 0.025;
 export const AnimateLink = ({ children, href }: { children: string; href: string }) => {
-    const MotionLink = motion(Link);
+    const MotionLink = motion.create(Link);
+    function generateUniqueId() {
+        return uuidv4();
+    }
 
     return (
         <MotionLink
@@ -29,7 +33,7 @@ export const AnimateLink = ({ children, href }: { children: string; href: string
                                 ease: "easeInOut",
                                 delay: STAGER * i,
                             }}
-                            key={i}
+                            key={generateUniqueId()}
                         >
                             {l}
                         </motion.span>
@@ -50,7 +54,7 @@ export const AnimateLink = ({ children, href }: { children: string; href: string
                                 ease: "easeInOut",
                                 delay: STAGER * i,
                             }}
-                            key={i}
+                            key={generateUniqueId()}
                         >
                             {l}
                         </motion.span>

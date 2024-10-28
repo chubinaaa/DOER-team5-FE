@@ -10,7 +10,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { IoIosArrowDown } from "react-icons/io";
 
-const DUMMY_DATA = ["sports", "theatre", "movie", "events", "music", "comedy"];
+const DUMMY_DATA = [
+    { id: 1, name: "Sport" },
+    { id: 2, name: "Concert" },
+    { id: 3, name: "Theatre" },
+    { id: 4, name: "Cinema" },
+    { id: 5, name: "Events" },
+];
 
 const CategoryDropDown = () => {
     const [open, setOpen] = React.useState(false);
@@ -29,8 +35,8 @@ const CategoryDropDown = () => {
                     <DropdownMenuLabel className="text-white">Categories</DropdownMenuLabel>
                     <DropdownMenuSeparator className="bg-gray-400" />
                     {DUMMY_DATA.map((item) => (
-                        <DropdownMenuItem key={item} onSelect={() => setSelected(item)}>
-                            {item}
+                        <DropdownMenuItem key={item.id} onSelect={() => setSelected(item.name)}>
+                            {item.name}
                         </DropdownMenuItem>
                     ))}
                 </DropdownMenuContent>

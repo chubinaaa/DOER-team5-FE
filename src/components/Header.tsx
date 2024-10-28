@@ -9,7 +9,7 @@ import { AnimateButton } from "./animationHelpers/AnimateButton";
 
 const Header = () => {
     return (
-        <header className="h-[83px] w-full px-[90px] py-4 flex justify-between items-center ">
+        <header className="sticky z-50 top-0 h-[83px] w-full px-[90px] py-4 flex justify-between items-center  bg-primary-bg border-b border-b-[#7d7d8040] ">
             <div>
                 <h1 className="text-default-primary font-bold text-lg">BiletHub</h1>
             </div>
