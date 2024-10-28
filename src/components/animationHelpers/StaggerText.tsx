@@ -1,6 +1,7 @@
 "use client";
 import { motion, useAnimation, useInView } from "framer-motion";
 import React, { useEffect, useRef } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 type AnimatedTextProps = {
     text: string | string[];
@@ -24,6 +25,9 @@ const defaultAnimation = {
 };
 
 export const AnimatedText = ({ text, el: Wrapper = "h1", className }: AnimatedTextProps) => {
+    function generateUniqueId() {
+        return uuidv4();
+    }
     const controls = useAnimation();
     const textArray = Array.isArray(text) ? text : [text];
     const ref = useRef(null);
@@ -59,15 +63,15 @@ export const AnimatedText = ({ text, el: Wrapper = "h1", className }: AnimatedTe
                 transition={{ duration: 300, staggerChildren: 0.05, ease: "easeInOut" }}
                 aria-hidden
             >
-                {textArray.map((line, i) => (
-                    <span key={i} className="block">
+                {textArray.map((line) => (
+                    <span key={generateUniqueId()} className="block">
                         {line.split(" ").map((word, i) => (
                             <span className="inline-block" key={i}>
-                                {word.split("").map((char, i) => (
+                                {word.split("").map((char) => (
                                     <motion.span
                                         className="inline-block"
                                         variants={defaultAnimation}
-                                        key={i}
+                                        key={generateUniqueId()}
                                     >
                                         {char}
                                     </motion.span>

@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion, stagger, useAnimate } from "framer-motion";
+import { v4 as uuidv4 } from "uuid";
 
 import { Button } from "../ui/button";
 export const AnimateButton = ({
@@ -17,6 +18,9 @@ export const AnimateButton = ({
     onClick?: () => void;
 }) => {
     const [scope, animate] = useAnimate();
+    function generateUniqueId() {
+        return uuidv4();
+    }
 
     const onClickAnimate = async () => {
         await animate([
@@ -68,8 +72,11 @@ export const AnimateButton = ({
             >
                 <span className="sr-only">{children}</span>
                 <span aria-hidden>
-                    {children.split("").map((letter, i) => (
-                        <span className={`letter inline-block ${letter === " " && "w-1"}`} key={i}>
+                    {children.split("").map((letter) => (
+                        <span
+                            className={`letter inline-block ${letter === " " && "w-1"}`}
+                            key={generateUniqueId()}
+                        >
                             {letter}
                         </span>
                     ))}
