@@ -60,7 +60,7 @@ export const BannerSlider = () => {
     };
 
     return (
-        <div className=" mt-12 relative  overflow-hidden  w-full">
+        <div className=" mt-12 relative  overflow-hidden  w-full mb-[186px]">
             <motion.div
                 drag="x"
                 dragConstraints={{ left: 0, right: 0 }}
