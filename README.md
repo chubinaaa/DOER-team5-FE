@@ -2,6 +2,9 @@
 
 _project description_
 
+- Pre-Deploy: https://doer-team5-fe-pre.vercel.app
+- Production: https://doer-team5-fe-main.vercel.app
+
 ## Getting Started
 
 ### Prerequisites
