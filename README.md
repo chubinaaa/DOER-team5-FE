@@ -1,4 +1,4 @@
-# Project NAME
+# Project BiletHub
 
 _project description_
 
@@ -20,7 +20,7 @@ Follow these steps to get the project up and running on your local machine:
 1. Clone the repository or download the project ZIP file:
 
    ```bash
-   git clone https://github.com/Doer-Community/team5-FE.git ./
+   git clone https://github.com/chubinaaa/DOER-team5-FE.git ./
    ```
 
 2. Install project dependencies:
