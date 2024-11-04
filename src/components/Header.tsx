@@ -19,7 +19,7 @@ const Header = () => {
                 </div>
                 <AnimateLink href="/sell-ticket">Sell Tickets</AnimateLink>
 
-                <AnimateButton staggerNum={0.05} icon={<CiLogin />}>
+                <AnimateButton className="rounded-[14px]" staggerNum={0.01} icon={<CiLogin />}>
                     Log in
                 </AnimateButton>
             </div>

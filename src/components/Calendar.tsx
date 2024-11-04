@@ -2,8 +2,8 @@
 
 import * as React from "react";
 import { format } from "date-fns";
-import { Calendar as CalendarIcon } from "lucide-react";
 
+import { IoCalendarClearOutline } from "react-icons/io5";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -18,15 +18,19 @@ function CalendarPicker() {
                 <Button
                     variant={"bgnone"}
                     className={cn(
-                        "  underline-none hover:bg-none hover:outline-none bg-transparent text-white  font-normal w-full  ",
+                        "  underline-none hover:bg-none hover:outline-none bg-transparent text-white text-lg  font-normal w-full  justify-start  ",
                         !date && "text-muted-foreground",
                     )}
                 >
-                    <CalendarIcon className="mr-2 h-4 w-4 text-white" />
-                    {date ? format(date, "PPP") : <span className="text-white">Pick a date</span>}
+                    <IoCalendarClearOutline className=" text-white  text-3xl" />
+                    {date ? (
+                        format(date, "PPP")
+                    ) : (
+                        <span className="text-white opacity-40 ">Pick a date</span>
+                    )}
                 </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-auto p-0 bg-primary-bg border  rounded-xl rounded-b-2xl">
+            <PopoverContent className="w-[290px] p-0 bg-[#0F0F10]   rounded-xl rounded-b-2xl">
                 <Calendar mode="single" selected={date} onSelect={setDate} initialFocus />
             </PopoverContent>
         </Popover>

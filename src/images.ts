@@ -9,6 +9,12 @@ import sport2 from "./assets/sport2.png";
 import sport3 from "./assets/sport3.png";
 import popular1 from "./assets/popular-event-1.png";
 import popular2 from "./assets/popular-event2.png";
+import gakra from "./assets/gakra.jpg";
+import shekra from "./assets/shekra.jpg";
+import sportEvent from "./assets/sportEvent.jpg";
+import jeansGeneration from "./assets/jinsebis-taoba.jpeg";
+import basketball from "./assets/basketball.jpg";
+import judoMaster from "./assets/judoMaster.jpeg";
 
 export const BannerImages = [
     {
@@ -54,21 +60,21 @@ export const theaterData = [
     },
     {
         id: 3,
-        img: theatre1,
-        title: "The Cherry Orchard",
-        data: "14april 2025",
+        img: jeansGeneration,
+        title: "jinsebis taoba",
+        data: "23 november 2024",
     },
     {
         id: 4,
-        img: theatre2,
-        title: "Otelo",
-        data: "14april 2025",
+        img: gakra,
+        title: "Gakra",
+        data: "22 december 2024",
     },
     {
         id: 5,
-        img: theatre3,
-        title: "Igi",
-        data: "14april 2025",
+        img: shekra,
+        title: "Shekra",
+        data: "9 january 2025",
     },
     {
         id: 6,
@@ -101,31 +107,31 @@ export const sportrData = [
         id: 1,
         img: sport2,
         title: "Georgian Sailing Club",
-        data: "14march 2025",
+        data: "14 march 2025",
     },
     {
         id: 2,
         img: sport3,
         title: "Football - Georgia & Albaneti",
-        data: "14march 2025",
+        data: "14 march 2025",
     },
     {
         id: 3,
-        img: sport1,
-        title: "Rugby - Georgia & Irlandia",
-        data: "14april 2025",
+        img: judoMaster,
+        title: "Grand Prix - Judo",
+        data: "14 april 2025",
     },
     {
         id: 4,
-        img: sport2,
-        title: "Georgian Sailing Club",
-        data: "14april 2025",
+        img: basketball,
+        title: "basketball - Georgia vs Greece",
+        data: "9 february 2025",
     },
     {
         id: 5,
-        img: sport3,
-        title: "Football - Georgia & Albaneti",
-        data: "14april 2025",
+        img: sportEvent,
+        title: "Football - Georgia vs Ukraine",
+        data: "23 march 2025",
     },
     {
         id: 6,
