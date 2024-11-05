@@ -2,8 +2,8 @@
 
 _project description_
 
-- Pre-Deploy: https://doer-team5-fe-pre.vercel.app
-- Production: https://doer-team5-fe-main.vercel.app
+- Pre-Deploy: https://bilethub-pre.vercel.app
+- Production: https://bilethub-main.vercel.app
 
 ## Getting Started
 
