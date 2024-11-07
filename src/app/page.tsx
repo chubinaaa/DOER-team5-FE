@@ -1,5 +1,6 @@
 import { BannerSlider } from "@/components/BannerSlider";
 import Carousel from "@/components/Carousel";
+
 import Hero from "@/components/Hero";
 import { sportrData, theaterData, popularEventData } from "@/images";
 
