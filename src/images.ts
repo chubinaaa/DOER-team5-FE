@@ -1,20 +1,20 @@
-import sportImg from "./assets/sport.jpg";
-import concertImg from "./assets/concert.jpg";
-import theatre1 from "./assets/theatre-1.jpg";
-import theatre from "./assets/theatre.jpg";
-import theatre2 from "./assets/theater-2.png";
-import theatre3 from "./assets/theater-3.png";
-import sport1 from "./assets/sport1.png";
-import sport2 from "./assets/sport2.png";
-import sport3 from "./assets/sport3.png";
-import popular1 from "./assets/popular-event-1.png";
-import popular2 from "./assets/popular-event2.png";
-import gakra from "./assets/gakra.jpg";
-import shekra from "./assets/shekra.jpg";
-import sportEvent from "./assets/sportEvent.jpg";
-import jeansGeneration from "./assets/jinsebis-taoba.jpeg";
-import basketball from "./assets/basketball.jpg";
-import judoMaster from "./assets/judoMaster.jpeg";
+import sportImg from "../public/assets/sport.jpg";
+import concertImg from "../public/assets/concert.jpg";
+import theatre1 from "../public/assets/theatre-1.jpg";
+import theatre from "../public/assets/theatre.jpg";
+import theatre2 from "../public/assets/theater-2.png";
+import theatre3 from "../public/assets/theater-3.png";
+import sport1 from "../public/assets/sport1.png";
+import sport2 from "../public/assets/sport2.png";
+import sport3 from "../public/assets/sport3.png";
+import popular1 from "../public/assets/popular-event-1.png";
+import popular2 from "../public/assets/popular-event2.png";
+import gakra from "../public/assets/gakra.jpg";
+import shekra from "../public/assets/shekra.jpg";
+import sportEvent from "../public/assets/sportEvent.jpg";
+import jeansGeneration from "../public/assets/jinsebis-taoba.jpeg";
+import basketball from "../public/assets/basketball.jpg";
+import judoMaster from "../public/assets/judoMaster.jpeg";
 
 export const BannerImages = [
     {
