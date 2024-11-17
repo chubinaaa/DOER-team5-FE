@@ -10,12 +10,16 @@
         "prepare": "husky install"
     },
     "dependencies": {
+        "@fortawesome/free-brands-svg-icons": "^6.6.0",
+        "@fortawesome/free-solid-svg-icons": "^6.6.0",
+        "@fortawesome/react-fontawesome": "^0.2.2",
         "@radix-ui/react-dropdown-menu": "^2.1.2",
         "@radix-ui/react-popover": "^1.1.2",
         "@radix-ui/react-slot": "^1.1.0",
         "class-variance-authority": "^0.7.0",
         "clsx": "^2.1.1",
         "date-fns": "^3.6.0",
+        "font-awesome": "^4.7.0",
         "framer-motion": "^11.11.11",
         "lucide-react": "^0.453.0",
         "next": "14.2.15",

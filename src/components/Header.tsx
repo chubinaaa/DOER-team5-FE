@@ -6,6 +6,7 @@ import { GoGlobe } from "react-icons/go";
 import { CiLogin } from "react-icons/ci";
 import { AnimateLink } from "./animationHelpers/MotionLink";
 import { AnimateButton } from "./animationHelpers/AnimateButton";
+import Register from "@/components/registration";
 
 const Header = () => {
     return (
@@ -22,6 +23,8 @@ const Header = () => {
                 <AnimateButton className="rounded-[14px]" staggerNum={0.01} icon={<CiLogin />}>
                     Log in
                 </AnimateButton>
+
+                <Register />
             </div>
         </header>
     );
