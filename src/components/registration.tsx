@@ -1,19 +1,16 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import useModal from "@/hooks/useModal";
+import { useState } from "react";
 
 const Register: React.FC = () => {
-    const [showModal, setShowModal] = useState<boolean>(false);
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [rememberMe, setRememberMe] = useState<boolean>(false);
-    const modalRef = useRef<HTMLDivElement>(null);
 
-    const toggleModal = (): void => {
-        setShowModal(!showModal);
-    };
+    const [showModal, toggleModal, modalRef] = useModal();
 
     const togglePasswordVisibility = (): void => {
         setShowPassword(!showPassword);
@@ -22,18 +19,6 @@ const Register: React.FC = () => {
     const toggleRememberMe = (): void => {
         setRememberMe(!rememberMe);
     };
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-                setShowModal(false);
-            }
-        };
-
-        document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, []);
 
     return (
         <div className="text-center">
