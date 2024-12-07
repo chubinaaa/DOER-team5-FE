@@ -10,6 +10,10 @@ const config: Config = {
     ],
     theme: {
         extend: {
+            fontFamily: {
+                sans: ["Montserrat", "sans-serif"],
+                serif: ["Montserrat", "serif"],
+            },
             borderRadius: {
                 lg: "var(--radius)",
                 md: "calc(var(--radius) - 2px)",
@@ -19,7 +23,7 @@ const config: Config = {
                 background: "hsl(var(--background))",
                 foreground: "hsl(var(--foreground))",
                 primary: "#070707",
-                Secondary: "E21836",
+                Secondary: "#E21836",
                 dark: "#0F0F10",
                 grey: "#777777",
                 red: "#CE4343",

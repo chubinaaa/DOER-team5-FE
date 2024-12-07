@@ -3,12 +3,14 @@
 import React from "react";
 import { GoGlobe } from "react-icons/go";
 
-import { CiLogin } from "react-icons/ci";
 import { AnimateLink } from "./animationHelpers/MotionLink";
-import { AnimateButton } from "./animationHelpers/AnimateButton";
+
 import Register from "@/components/registration";
 
+import RegisterModal from "./auth/Register";
+
 const Header = () => {
+    const [isOpenRegisterModal, setIsOpenRegisterModal] = React.useState(false);
     return (
         <header className="sticky z-50 top-0 h-[83px] w-full px-[90px] py-4 flex justify-between items-center  bg-primary-bg border-b border-b-[#7d7d8040] ">
             <div>
@@ -20,9 +22,10 @@ const Header = () => {
                 </div>
                 <AnimateLink href="/sell-ticket">Sell Tickets</AnimateLink>
 
-                <AnimateButton className="rounded-[14px]" staggerNum={0.01} icon={<CiLogin />}>
-                    Log in
-                </AnimateButton>
+                <RegisterModal
+                    isOpen={isOpenRegisterModal}
+                    onClose={() => setIsOpenRegisterModal((prevIsOpen) => !prevIsOpen)}
+                />
 
                 <Register />
             </div>
