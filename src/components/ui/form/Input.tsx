@@ -16,8 +16,6 @@ interface InputProps {
 const InputWrapper = ({ register, className, placeholder, error, type }: InputProps) => {
     const [password1Visible, setPassword1Visible] = React.useState<boolean>(false);
 
-    console.log("error", error);
-
     const passwordIcon =
         password1Visible === true ? (
             <AiOutlineEyeInvisible className="w-[22px] h-[22px]" />

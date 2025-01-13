@@ -22,3 +22,23 @@ export const registerSchema = z
     });
 
 export type RegistrationFormValues = z.infer<typeof registerSchema>;
+
+export const loginSchema = z.object({
+    email: z.string().email("Invalid email adress"),
+    password: z.string().min(5, "Password must be at least 5 characters long"),
+});
+
+export type LoginFormValues = z.infer<typeof loginSchema>;
+
+export type registerDataTypes = {
+    username: string;
+    email: string;
+    password: string;
+};
+
+export type loginDataTypes = {
+    username: string | null | undefined;
+    email: string | null | undefined;
+    loginType?: string;
+    registrationType?: string;
+};

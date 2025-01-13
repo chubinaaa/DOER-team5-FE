@@ -5,12 +5,12 @@ import { GoGlobe } from "react-icons/go";
 
 import { AnimateLink } from "./animationHelpers/MotionLink";
 
-import Register from "@/components/registration";
+import LoginModal from "./auth/LogIn";
+import LogOut from "./auth/LogOut";
 
-import RegisterModal from "./auth/Register";
+const Header = ({ session }: { session: { user: { name: string; email: string } } | null }) => {
+    const [isOpenLoginModal, setIsOpenLoginModal] = React.useState(false);
 
-const Header = () => {
-    const [isOpenRegisterModal, setIsOpenRegisterModal] = React.useState(false);
     return (
         <header className="sticky z-50 top-0 h-[83px] w-full px-[90px] py-4 flex justify-between items-center  bg-primary-bg border-b border-b-[#7d7d8040] ">
             <div>
@@ -22,12 +22,15 @@ const Header = () => {
                 </div>
                 <AnimateLink href="/sell-ticket">Sell Tickets</AnimateLink>
 
-                <RegisterModal
-                    isOpen={isOpenRegisterModal}
-                    onClose={() => setIsOpenRegisterModal((prevIsOpen) => !prevIsOpen)}
-                />
+                {!session?.user && (
+                    <LoginModal
+                        callFromHeader={true}
+                        isOpen={isOpenLoginModal}
+                        onClose={() => setIsOpenLoginModal((prevIsOpen) => !prevIsOpen)}
+                    />
+                )}
 
-                <Register />
+                {session?.user && <LogOut />}
             </div>
         </header>
     );

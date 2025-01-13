@@ -9,13 +9,19 @@ import {
 interface ModalProps {
     children: React.ReactNode;
     isOpen: boolean;
+    btnText: string;
     onClose: () => void;
+    callFromHeader?: boolean;
 }
 
-const Modal = ({ children, isOpen, onClose }: ModalProps) => {
+const Modal = ({ children, isOpen, onClose, callFromHeader, btnText }: ModalProps) => {
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
-            <DialogTrigger>Sign Up</DialogTrigger>
+            <DialogTrigger
+                className={`${callFromHeader ? "px-8 py-3 text-md  bg-Secondary rounded-xl" : ""}`}
+            >
+                {btnText}
+            </DialogTrigger>
             <DialogContent className="flex justify-center flex-col items-center py-12 px-10 md:rounded-[28px]  ">
                 <DialogHeader>
                     <DialogTitle className="mb-16 text-3xl font-sans">Sign up Bilethub</DialogTitle>

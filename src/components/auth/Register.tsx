@@ -3,7 +3,7 @@
 import React from "react";
 import Modal from "../Modal";
 
-import { FaGoogle } from "react-icons/fa";
+// import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { IoIosWarning } from "react-icons/io";
@@ -14,13 +14,18 @@ import { registerSchema, RegistrationFormValues } from "@/lib/types/registerSche
 
 import { useMutation } from "@tanstack/react-query";
 import { userSignUp } from "../../../utils/auth/action";
+import LoginModal from "./LogIn";
+import GoogleLogIn from "./GoogleLogIn";
 
 interface RegisterModalProps {
     isOpen: boolean;
     onClose: () => void;
 }
 
-const Register = ({ isOpen, onClose }: RegisterModalProps) => {
+const Register = ({
+    isOpen: isRegisterOpen,
+    onClose: OnCloseRegisterModal,
+}: RegisterModalProps) => {
     const {
         register,
         handleSubmit,
@@ -32,11 +37,18 @@ const Register = ({ isOpen, onClose }: RegisterModalProps) => {
         defaultValues: {
             agreeToPrivacyPolcy: false,
         },
-        mode: "onBlur",
+        mode: "onChange",
     });
+    const [isOpenLoginModal, setIsOpenLoginModal] = React.useState(false);
+
+    type registerDataTypes = {
+        username: string;
+        email: string;
+        password: string;
+    };
 
     const { mutate } = useMutation({
-        mutationFn: async (formData: FormData) => {
+        mutationFn: async (formData: registerDataTypes) => {
             return await userSignUp(formData);
         },
         onSuccess: () => {
@@ -48,16 +60,17 @@ const Register = ({ isOpen, onClose }: RegisterModalProps) => {
     });
 
     const onSubmitHandler = async (data: RegistrationFormValues) => {
-        const formData = new FormData();
-        formData.append("username", data.username);
-        formData.append("email", data.email);
-        formData.append("password", data.password);
+        const registerData = {
+            username: data.username,
+            email: data.email,
+            password: data.password,
+        };
 
-        mutate(formData);
+        mutate(registerData);
     };
 
     return (
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal btnText="Sign Up" isOpen={isRegisterOpen} onClose={OnCloseRegisterModal}>
             {errors.agreeToPrivacyPolcy && (
                 <div className="border border-red w-full rounded-2xl h-12 py-3 px-9 flex justify-center items-center text-white gap-2">
                     <IoIosWarning className="text-2xl text-red" />
@@ -110,27 +123,23 @@ const Register = ({ isOpen, onClose }: RegisterModalProps) => {
                 </div>
 
                 <Button className="w-full mt-12 mb-6  rounded-2xl h-14 py-4 bg-Secondary text-white text-xl font-mediumtransition-colors  duration-200 ease-in-out">
-                    Sign in
+                    Sign up
                 </Button>
-                <div className="flex justify-center items-center w-full gap-3">
-                    <span className="border-b bg-[#6D6F7424]  w-full" />
-                    <p>Or</p>
-                    <span className="border-b bg-[#6D6F7424] w-full" />
-                </div>
-
-                <div>
-                    <Button
-                        className="w-13   bg-dark h-10 py-3 px-4 my-5  border border-[#6d6f742f] rounded-xl"
-                        size="icon"
-                    >
-                        <FaGoogle />
-                    </Button>
-                </div>
-                <div className="flex   justify-center items-center gap-1 text-[#FFFFFF] text-base font-medium">
-                    <p>Already have an account?</p>
-                    <button className="underline">Sign in</button>
-                </div>
             </form>
+            <div className="flex justify-center items-center w-full gap-3">
+                <span className="border-b bg-[#6D6F7424]  w-full" />
+                <p>Or</p>
+                <span className="border-b bg-[#6D6F7424] w-full" />
+            </div>
+
+            <GoogleLogIn />
+            <div className="flex   justify-center items-center gap-1 text-[#FFFFFF] text-base font-medium">
+                <p>Already have an account?</p>
+                <LoginModal
+                    isOpen={isOpenLoginModal}
+                    onClose={() => setIsOpenLoginModal((prevIsOpen) => !prevIsOpen)}
+                />
+            </div>
         </Modal>
     );
 };
