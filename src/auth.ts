@@ -1,7 +1,6 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import { getAllUsers, userSignIn } from "../utils/auth/action";
-import axios from "axios";
+import { getAllUsers, userSignIn, userSignUp } from "../utils/auth/action";
 
 export const {
     handlers: { GET, POST },
@@ -25,57 +24,51 @@ export const {
         }),
     ],
     callbacks: {
-        async signIn({ user }) {
+        async signIn({ user, account, profile }) {
+            console.log("Google SignIn Callback:");
+            console.log("User:", user);
+            console.log("Account:", account);
+            console.log("Profile:", profile);
+
             const { name, email } = user;
 
-            const userName = name?.replace(/\s+/g, "");
+            if (!email) {
+                console.error("Email is missing. Cannot proceed.");
+                return false;
+            }
+
+            const userName = name?.replace(/\s+/g, "") || "defaultUsername";
 
             try {
                 const users = await getAllUsers();
 
                 const userExists = users.some((existingUser) => existingUser.email === email);
 
-                const userData: {
-                    username?: string | null | undefined;
-                    email: string | null | undefined;
-                    loginType?: string;
-                    registrationType?: string;
-                } = {
-                    email: email,
-                };
-
                 if (userExists) {
-                    userData["email"] = email;
-                    userData["loginType"] = "google";
+                    const userLoginData = {
+                        email: email,
+                        loginType: "google",
+                    };
+                    await userSignIn(userLoginData);
+                    console.log("User logged in successfully.");
                 } else {
-                    userData["username"] = userName;
-                    userData["email"] = email;
-                    userData["registrationType"] = "google";
+                    const userRegisterData = {
+                        username: userName,
+                        email: email,
+
+                        registrationType: "google",
+                    };
+
+                    await userSignUp(userRegisterData);
                 }
 
-                if (userExists) {
-                    await userSignIn(userData);
-                } else {
-                    console.log(userData);
-                    const response = await axios.post(
-                        "https://biletebi-back-end.onrender.com/Users/register",
-
-                        userData,
-                        {
-                            headers: {
-                                "Content-Type": "application/json",
-                                Accept: "application/json",
-                            },
-                            withCredentials: true,
-                        },
-                    );
-                    return response.data;
-                }
+                return true;
             } catch (error) {
-                console.error("Error during sign-in:", error);
+                console.error("Error during Google sign-in:", error);
                 return false;
             }
         },
+
         async session({ session }) {
             return session;
         },

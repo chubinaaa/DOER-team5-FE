@@ -14,18 +14,11 @@ import { registerSchema, RegistrationFormValues } from "@/lib/types/registerSche
 
 import { useMutation } from "@tanstack/react-query";
 import { userSignUp } from "../../../utils/auth/action";
-import LoginModal from "./LogIn";
+
 import GoogleLogIn from "./GoogleLogIn";
+import { useModal } from "@/context/ModalContext";
 
-interface RegisterModalProps {
-    isOpen: boolean;
-    onClose: () => void;
-}
-
-const Register = ({
-    isOpen: isRegisterOpen,
-    onClose: OnCloseRegisterModal,
-}: RegisterModalProps) => {
+const Register = () => {
     const {
         register,
         handleSubmit,
@@ -39,7 +32,7 @@ const Register = ({
         },
         mode: "onChange",
     });
-    const [isOpenLoginModal, setIsOpenLoginModal] = React.useState(false);
+    const { isSignUpModalOpen, closeSignUpModal, openSignInModal } = useModal();
 
     type registerDataTypes = {
         username: string;
@@ -70,7 +63,7 @@ const Register = ({
     };
 
     return (
-        <Modal btnText="Sign Up" isOpen={isRegisterOpen} onClose={OnCloseRegisterModal}>
+        <Modal btnText="Sign Up" isOpen={isSignUpModalOpen} onClose={closeSignUpModal}>
             {errors.agreeToPrivacyPolcy && (
                 <div className="border border-red w-full rounded-2xl h-12 py-3 px-9 flex justify-center items-center text-white gap-2">
                     <IoIosWarning className="text-2xl text-red" />
@@ -135,10 +128,14 @@ const Register = ({
             <GoogleLogIn />
             <div className="flex   justify-center items-center gap-1 text-[#FFFFFF] text-base font-medium">
                 <p>Already have an account?</p>
-                <LoginModal
-                    isOpen={isOpenLoginModal}
-                    onClose={() => setIsOpenLoginModal((prevIsOpen) => !prevIsOpen)}
-                />
+                <button
+                    onClick={() => {
+                        closeSignUpModal();
+                        openSignInModal();
+                    }}
+                >
+                    Log in
+                </button>
             </div>
         </Modal>
     );

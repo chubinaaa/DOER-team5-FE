@@ -33,12 +33,12 @@ export type LoginFormValues = z.infer<typeof loginSchema>;
 export type registerDataTypes = {
     username: string;
     email: string;
-    password: string;
+    password?: string;
+    registrationType?: string;
 };
 
 export type loginDataTypes = {
-    username: string | null | undefined;
     email: string | null | undefined;
+    password?: string | null | undefined;
     loginType?: string;
-    registrationType?: string;
 };

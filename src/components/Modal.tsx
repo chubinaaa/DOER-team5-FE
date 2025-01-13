@@ -1,10 +1,4 @@
-import {
-    Dialog,
-    DialogContent,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 interface ModalProps {
     children: React.ReactNode;
@@ -14,14 +8,16 @@ interface ModalProps {
     callFromHeader?: boolean;
 }
 
-const Modal = ({ children, isOpen, onClose, callFromHeader, btnText }: ModalProps) => {
+const Modal = ({ children, isOpen, onClose }: ModalProps) => {
+    const handleOpenChange = (isOpenState: boolean) => {
+        // Trigger onClose only when modal is being explicitly closed
+        if (!isOpenState) {
+            onClose();
+        }
+    };
+
     return (
-        <Dialog open={isOpen} onOpenChange={onClose}>
-            <DialogTrigger
-                className={`${callFromHeader ? "px-8 py-3 text-md  bg-Secondary rounded-xl" : ""}`}
-            >
-                {btnText}
-            </DialogTrigger>
+        <Dialog open={isOpen} onOpenChange={handleOpenChange}>
             <DialogContent className="flex justify-center flex-col items-center py-12 px-10 md:rounded-[28px]  ">
                 <DialogHeader>
                     <DialogTitle className="mb-16 text-3xl font-sans">Sign up Bilethub</DialogTitle>
