@@ -9,6 +9,7 @@ import LoginModal from "./auth/LogIn";
 import LogOut from "./auth/LogOut";
 import { useModal } from "@/context/ModalContext";
 import Register from "./auth/Register";
+import { Button } from "./ui/button";
 
 const Header = ({ session }: { session: { user: { name: string; email: string } } | null }) => {
     const { isSignInModalOpen, openSignInModal } = useModal();
@@ -25,7 +26,12 @@ const Header = ({ session }: { session: { user: { name: string; email: string } 
                 <AnimateLink href="/sell-ticket">Sell Tickets</AnimateLink>
                 {!session?.user && (
                     <>
-                        <button onClick={openSignInModal}>LogIn</button>
+                        <Button
+                            className="py-2.5 px-4 bg-default-primary hover:bg-default-secondary "
+                            onClick={openSignInModal}
+                        >
+                            Log in
+                        </Button>
                         <LoginModal callFromHeader={true} />
                         <Register />
                     </>

@@ -6,7 +6,12 @@ import { Button } from "../ui/button";
 const LogOut = () => {
     return (
         <form action={doLogout}>
-            <Button type="submit">Log Out</Button>
+            <Button
+                className="py-2.5 px-4 bg-default-primary hover:bg-default-secondary "
+                type="submit"
+            >
+                Log Out
+            </Button>
         </form>
     );
 };

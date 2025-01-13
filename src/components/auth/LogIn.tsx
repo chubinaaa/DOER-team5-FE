@@ -16,6 +16,7 @@ import { useMutation } from "@tanstack/react-query";
 import GoogleLogIn from "./GoogleLogIn";
 import { userSignIn } from "../../../utils/auth/action";
 import { useModal } from "@/context/ModalContext";
+import { toast } from "react-toastify";
 
 interface LoginModalProps {
     callFromHeader?: boolean;
@@ -45,10 +46,12 @@ const LogIn = ({ callFromHeader }: LoginModalProps) => {
             return await userSignIn(formData);
         },
         onSuccess: () => {
-            console.log("User Loged In successfully");
+            toast.success("User Loged In successfully");
+            closeSignInModal();
         },
-        onError: (error) => {
-            console.error("Error Loggin User:", error);
+        onError: () => {
+            toast.error("Error Loggin User");
+            closeSignInModal();
         },
     });
 

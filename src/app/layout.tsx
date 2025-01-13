@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Providers from "./providers";
 import { auth } from "@/auth";
+import { ToastContainer } from "react-toastify";
 
 const montserratSans = localFont({
     src: "./fonts/Montserrat-VariableFont_wght.ttf",
@@ -29,6 +30,7 @@ export default async function RootLayout({
                 <Providers>
                     <div className="app-container">
                         <Header session={{ user: session ? session.user : null }} />
+                        <ToastContainer position="top-right" autoClose={3000} />
                         {children}
                         <Footer />
                     </div>

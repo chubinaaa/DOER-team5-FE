@@ -37,7 +37,10 @@ export const {
                 return false;
             }
 
-            const userName = name?.replace(/\s+/g, "") || "defaultUsername";
+            const userName =
+                typeof name === "string"
+                    ? `${name.replace(/\s+/g, "")}_${Date.now()}`
+                    : `defaultUsername_${Date.now()}`;
 
             try {
                 const users = await getAllUsers();

@@ -17,6 +17,7 @@ import { userSignUp } from "../../../utils/auth/action";
 
 import GoogleLogIn from "./GoogleLogIn";
 import { useModal } from "@/context/ModalContext";
+import { toast } from "react-toastify";
 
 const Register = () => {
     const {
@@ -45,10 +46,14 @@ const Register = () => {
             return await userSignUp(formData);
         },
         onSuccess: () => {
+            toast.success("User created successfully");
             console.log("User created successfully");
+            closeSignUpModal();
         },
         onError: (error) => {
             console.error("Error creating User:", error);
+            toast.error("Error creating User");
+            closeSignUpModal();
         },
     });
 
