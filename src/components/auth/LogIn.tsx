@@ -45,7 +45,7 @@ const LogIn = ({ callFromHeader }: LoginModalProps) => {
         mutationFn: async (formData: loginDataTypes) => {
             return await userSignIn(formData);
         },
-        onSuccess: () => {
+        onSuccess: async () => {
             toast.success("User Loged In successfully");
             closeSignInModal();
         },
@@ -56,7 +56,6 @@ const LogIn = ({ callFromHeader }: LoginModalProps) => {
     });
 
     const onSubmitHandler = async (data: LoginFormValues) => {
-        console.log("shemovida ak");
         const loginFormData = {
             email: data.email,
             password: data.password,
