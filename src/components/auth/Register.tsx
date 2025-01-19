@@ -3,21 +3,14 @@
 import React from "react";
 import Modal from "../Modal";
 
-// import { FaGoogle } from "react-icons/fa";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { IoIosWarning } from "react-icons/io";
 import InputWrapper from "../ui/form/Input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "../ui/button";
-import { registerSchema, RegistrationFormValues } from "@/lib/types/registerSchema";
-
-import { useMutation } from "@tanstack/react-query";
-import { userSignUp } from "../../../utils/auth/action";
 
 import GoogleLogIn from "./GoogleLogIn";
-import { useModal } from "@/context/ModalContext";
-import { toast } from "react-toastify";
+
+import { useRegister } from "./hooks";
 
 const Register = () => {
     const {
@@ -25,47 +18,12 @@ const Register = () => {
         handleSubmit,
         setValue,
         watch,
-        formState: { errors },
-    } = useForm<RegistrationFormValues>({
-        resolver: zodResolver(registerSchema),
-        defaultValues: {
-            agreeToPrivacyPolcy: false,
-        },
-        mode: "onChange",
-    });
-    const { isSignUpModalOpen, closeSignUpModal, openSignInModal } = useModal();
-
-    type registerDataTypes = {
-        username: string;
-        email: string;
-        password: string;
-    };
-
-    const { mutate } = useMutation({
-        mutationFn: async (formData: registerDataTypes) => {
-            return await userSignUp(formData);
-        },
-        onSuccess: () => {
-            toast.success("User created successfully");
-            console.log("User created successfully");
-            closeSignUpModal();
-        },
-        onError: (error) => {
-            console.error("Error creating User:", error);
-            toast.error("Error creating User");
-            closeSignUpModal();
-        },
-    });
-
-    const onSubmitHandler = async (data: RegistrationFormValues) => {
-        const registerData = {
-            username: data.username,
-            email: data.email,
-            password: data.password,
-        };
-
-        mutate(registerData);
-    };
+        errors,
+        isSignUpModalOpen,
+        closeSignUpModal,
+        openSignInModal,
+        onSubmitHandler,
+    } = useRegister();
 
     return (
         <Modal btnText="Sign Up" isOpen={isSignUpModalOpen} onClose={closeSignUpModal}>

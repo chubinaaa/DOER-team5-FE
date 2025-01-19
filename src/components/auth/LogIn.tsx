@@ -3,72 +3,25 @@
 import React from "react";
 import Modal from "../Modal";
 
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
 import InputWrapper from "../ui/form/Input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "../ui/button";
-import { loginDataTypes, LoginFormValues, loginSchema } from "@/lib/types/registerSchema";
-
-import { useMutation } from "@tanstack/react-query";
 
 import GoogleLogIn from "./GoogleLogIn";
-import { userSignIn } from "../../../utils/auth/action";
-import { useModal } from "@/context/ModalContext";
-import { toast } from "react-toastify";
 
-interface LoginModalProps {
-    callFromHeader?: boolean;
-}
-
-export type LoginFormData = {
-    email: string;
-    password?: string;
-    loginType?: string;
-};
+import { LoginModalProps } from "./types";
+import { useLogin } from "./hooks";
 
 const LogIn = ({ callFromHeader }: LoginModalProps) => {
     const {
         register,
         handleSubmit,
-
-        formState: { errors },
-    } = useForm<LoginFormValues>({
-        resolver: zodResolver(loginSchema),
-
-        mode: "onChange",
-    });
-    const { closeSignInModal, openSignUpModal, isSignInModalOpen } = useModal();
-
-    const { mutate } = useMutation({
-        mutationFn: async (formData: loginDataTypes) => {
-            return await userSignIn(formData);
-        },
-        onSuccess: async () => {
-            toast.success("User Loged In successfully");
-            closeSignInModal();
-        },
-        onError: () => {
-            toast.error("Error Loggin User");
-            closeSignInModal();
-        },
-    });
-
-    const onSubmitHandler = async (data: LoginFormValues) => {
-        const loginFormData = {
-            email: data.email,
-            password: data.password,
-            loginType: "standard",
-        };
-        const formData = new FormData();
-
-        formData.append("email", data.email);
-        formData.append("password", data.password);
-        formData.append("loginType", "standard");
-
-        mutate(loginFormData);
-    };
+        errors,
+        isSignInModalOpen,
+        closeSignInModal,
+        openSignUpModal,
+        onSubmitHandler,
+    } = useLogin();
 
     return (
         <>

@@ -2,7 +2,10 @@ import * as z from "zod";
 
 export const registerSchema = z
     .object({
-        username: z.string().min(3, "Username must be at least 3 characters long"),
+        username: z
+            .string()
+            .min(3, "Username must be at least 3 characters long")
+            .regex(/^\S+$/, "Username must not contain spaces"),
         email: z.string().email("Invalid email adress"),
         password: z
             .string()
