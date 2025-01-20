@@ -3,6 +3,9 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Providers from "./providers";
+import { auth } from "@/auth";
+import { ToastContainer } from "react-toastify";
 
 const montserratSans = localFont({
     src: "./fonts/Montserrat-VariableFont_wght.ttf",
@@ -15,19 +18,23 @@ export const metadata: Metadata = {
     description: "Team 5 x Doer collab",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const session = await auth();
     return (
         <html lang="en">
             <body className={`${montserratSans.variable} antialiased scroll-hidden`}>
-                <div className="app-container">
-                    <Header />
-                    {children}
-                    <Footer />
-                </div>
+                <Providers>
+                    <div className="app-container">
+                        <Header session={{ user: session ? session.user : null }} />
+                        <ToastContainer position="top-right" autoClose={3000} />
+                        {children}
+                        <Footer />
+                    </div>
+                </Providers>
             </body>
         </html>
     );

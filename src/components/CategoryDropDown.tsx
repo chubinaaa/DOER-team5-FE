@@ -21,7 +21,6 @@ const DUMMY_DATA = [
 const CategoryDropDown = () => {
     const [open, setOpen] = React.useState(false);
     const [selected, setSelected] = React.useState("Select Category");
-    console.log(open);
 
     const isOpenArrow = open ? "rotate-180 ease-in duration-300" : "rotate-0 ease-in duration-300";
     return (

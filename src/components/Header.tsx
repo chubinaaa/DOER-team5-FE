@@ -3,12 +3,17 @@
 import React from "react";
 import { GoGlobe } from "react-icons/go";
 
-import { CiLogin } from "react-icons/ci";
 import { AnimateLink } from "./animationHelpers/MotionLink";
-import { AnimateButton } from "./animationHelpers/AnimateButton";
-import Register from "@/components/registration";
 
-const Header = () => {
+import LoginModal from "./auth/LogIn";
+import LogOut from "./auth/LogOut";
+import { useModal } from "@/context/ModalContext";
+import Register from "./auth/Register";
+import { Button } from "./ui/button";
+
+const Header = ({ session }: { session: { user: { name: string; email: string } } | null }) => {
+    const { isSignInModalOpen, openSignInModal } = useModal();
+    console.log(isSignInModalOpen);
     return (
         <header className="sticky z-50 top-0 h-[83px] w-full px-[90px] py-4 flex justify-between items-center  bg-primary-bg border-b border-b-[#7d7d8040] ">
             <div>
@@ -19,12 +24,20 @@ const Header = () => {
                     <GoGlobe className="text-lg" />
                 </div>
                 <AnimateLink href="/sell-ticket">Sell Tickets</AnimateLink>
+                {!session?.user && (
+                    <>
+                        <Button
+                            className="py-2.5 px-4 bg-default-primary hover:bg-default-secondary "
+                            onClick={openSignInModal}
+                        >
+                            Log in
+                        </Button>
+                        <LoginModal callFromHeader={true} />
+                        <Register />
+                    </>
+                )}
 
-                <AnimateButton className="rounded-[14px]" staggerNum={0.01} icon={<CiLogin />}>
-                    Log in
-                </AnimateButton>
-
-                <Register />
+                {session?.user && <LogOut />}
             </div>
         </header>
     );
